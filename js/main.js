@@ -230,20 +230,51 @@ const servicesLink = document.querySelector('.services-trigger');
 const servicesPopup = document.getElementById('servicesPopup');
 
 if (servicesLink && servicesPopup) {
-    servicesLink.addEventListener('click', (e) => {
+    // Remove previous event listeners
+    servicesLink.replaceWith(servicesLink.cloneNode(true));
+    
+    // Get the new element after replacement
+    const newServicesLink = document.querySelector('.services-trigger');
+    
+    // Add new click event listener
+    newServicesLink.addEventListener('click', (e) => {
         e.preventDefault();
-        popupManager.showPopup('servicesPopup');
+        servicesPopup.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
     });
 
-    // Add hover effect for service cards
+    // Close popup when clicking outside
+    servicesPopup.addEventListener('click', (e) => {
+        if (e.target === servicesPopup) {
+            servicesPopup.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
+
+    // Close popup when clicking the close button
+    const closeButton = servicesPopup.querySelector('.close-popup');
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            servicesPopup.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Add hover effects for service cards
     const serviceCards = document.querySelectorAll('.service-card');
     serviceCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            card.querySelector('i').style.transform = 'scale(1.1)';
+            const icon = card.querySelector('i');
+            if (icon) {
+                icon.style.transform = 'scale(1.1)';
+            }
         });
         
         card.addEventListener('mouseleave', () => {
-            card.querySelector('i').style.transform = 'scale(1)';
+            const icon = card.querySelector('i');
+            if (icon) {
+                icon.style.transform = 'scale(1)';
+            }
         });
     });
 }
