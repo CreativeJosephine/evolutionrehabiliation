@@ -38,29 +38,37 @@
     <!-- Header with Accessible Navigation -->
     <header role="banner">
         <nav class="navbar" role="navigation" aria-label="Main Navigation">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Healing Minds Logo" width="150" height="50">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <!-- Accessible burger menu button -->
-            <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
-            </button>
-            <div class="language-selector">
-                <select aria-label="Select language" onchange="changeLanguage(this.value)">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                </select>
+            <div class="nav-container">
+                <div class="logo">
+                    <!-- Fallback text in case image fails to load -->
+                    <a href="index.html" class="logo-link">
+                        <img src="images/logo.png" alt="Healing Minds Logo" width="150" height="50" 
+                             onerror="this.onerror=null; this.parentElement.innerHTML='Healing Minds';">
+                    </a>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="language-selector">
+                        <select aria-label="Select language" onchange="changeLanguage(this.value)">
+                            <option value="en">EN</option>
+                            <option value="es">ES</option>
+                            <option value="fr">FR</option>
+                        </select>
+                    </div>
+                    
+                    <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
             </div>
         </nav>
         <!-- Add after header -->
@@ -86,7 +94,10 @@
                 <h1 class="hero-title animate-fade-up">
                     <span class="accent-text">Transform</span> Your Life
                 </h1>
-                <p class="hero-subtitle animate-fade-up">Begin your journey to wellness with personalized psychosocial rehabilitation</p>
+                <p class="hero-subtitle animate-fade-up">
+                    Begin your journey to wellness with personalized psychosocial rehabilitation services. 
+                    We're here to support you every step of the way.
+                </p>
                 <div class="hero-buttons animate-fade-up">
                     <a href="contact.html" class="primary-button">Start Your Journey</a>
                     <a href="#services" class="secondary-button">Explore Services</a>
