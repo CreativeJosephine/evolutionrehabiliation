@@ -30,6 +30,18 @@
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Preload critical fonts -->
+    <link 
+        rel="preload" 
+        href="/fonts/inter-var.woff2" 
+        as="font" 
+        type="font/woff2" 
+        crossorigin
+    >
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -42,7 +54,13 @@
                 <div class="logo">
                     <!-- Fallback text in case image fails to load -->
                     <a href="index.html" class="logo-link">
-                        <img src="images/logo.png" alt="Healing Minds Logo" width="150" height="50" 
+                        <img 
+                            src="placeholder.jpg" 
+                            data-src="actual-image.jpg" 
+                            loading="lazy" 
+                            class="lazy"
+                            alt="Healing Minds Logo"
+                            width="150" height="50" 
                              onerror="this.onerror=null; this.parentElement.innerHTML='Healing Minds';">
                     </a>
                 </div>
@@ -84,22 +102,18 @@
     <main role="main" id="main-content">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-background">
-                <video autoplay muted loop playsinline class="hero-video">
-                    <source src="videos/healing-minds.mp4" type="video/mp4">
-                </video>
-                <div class="hero-overlay"></div>
-            </div>
+            <div class="hero-background"></div>
             <div class="hero-content">
-                <h1 class="hero-title animate-fade-up">
-                    <span class="accent-text">Transform</span> Your Life
+                <h1 class="hero-title">
+                    Transform Your Life With 
+                    <span class="highlight">Professional Support</span>
                 </h1>
-                <p class="hero-subtitle animate-fade-up">
+                <p class="hero-subtitle">
                     Begin your journey to wellness with personalized psychosocial rehabilitation services. 
-                    We're here to support you every step of the way.
+                    Our expert team is here to support and guide you every step of the way.
                 </p>
-                <div class="hero-buttons animate-fade-up">
-                    <a href="contact.html" class="primary-button">Start Your Journey</a>
+                <div class="hero-buttons">
+                    <a href="#contact" class="primary-button">Start Your Journey</a>
                     <a href="#services" class="secondary-button">Explore Services</a>
                 </div>
             </div>
@@ -151,16 +165,27 @@
 
     <!-- Newsletter Section -->
     <section class="newsletter" aria-labelledby="newsletter-heading">
-        <h2 id="newsletter-heading">Stay Updated</h2>
-        <form action="/subscribe" method="POST" class="newsletter-form">
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required 
-                       aria-describedby="email-help">
-                <small id="email-help">We'll never share your email with anyone else.</small>
-            </div>
-            <button type="submit">Subscribe</button>
-        </form>
+        <div class="container">
+            <h2 id="newsletter-heading">Stay Updated with Our Newsletter</h2>
+            <form action="/subscribe" method="POST" class="newsletter-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        placeholder="Enter your email"
+                        aria-describedby="email-help"
+                    >
+                    <small id="email-help">We'll never share your email with anyone else.</small>
+                </div>
+                <button type="submit">
+                    <span>Subscribe</span>
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -281,5 +306,7 @@
             </form>
         </div>
     </div>
+
+    <div class="scroll-progress"></div>
 </body>
 </html> 
