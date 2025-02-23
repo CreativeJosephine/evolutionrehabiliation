@@ -67,7 +67,7 @@
                 
                 <ul class="nav-links">
                     <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#" class="services-trigger">Services</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -308,5 +308,42 @@
     </div>
 
     <div class="scroll-progress"></div>
+
+    <!-- Add the Services Popup -->
+    <div id="servicesPopup" class="popup-overlay services-popup">
+        <div class="popup-content" role="dialog" aria-labelledby="servicesTitle">
+            <button class="close-popup" aria-label="Close popup">&times;</button>
+            <h2 id="servicesTitle">Our Services</h2>
+            <div class="services-grid">
+                <a href="services/cognitive-training.html" class="service-card">
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                    <h3>Cognitive Skills Training</h3>
+                    <p>Enhance mental functioning and problem-solving abilities</p>
+                    <span class="learn-more">Learn More →</span>
+                </a>
+                
+                <a href="services/social-skills.html" class="service-card">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <h3>Social Skills Development</h3>
+                    <p>Build meaningful relationships and improve communication</p>
+                    <span class="learn-more">Learn More →</span>
+                </a>
+                
+                <a href="services/life-skills.html" class="service-card">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <h3>Independent Living Skills</h3>
+                    <p>Develop essential life skills for greater autonomy</p>
+                    <span class="learn-more">Learn More →</span>
+                </a>
+                
+                <a href="services/emotional-support.html" class="service-card">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                    <h3>Emotional Support</h3>
+                    <p>Navigate challenges with professional guidance</p>
+                    <span class="learn-more">Learn More →</span>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html> 
