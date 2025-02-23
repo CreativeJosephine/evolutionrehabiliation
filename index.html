@@ -3,52 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Healing Minds provides personalized psychosocial rehabilitation services to empower individuals.">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Healing Minds | Psychosocial Rehabilitation Services">
+    <meta property="og:description" content="Healing Minds provides personalized psychosocial rehabilitation services to empower individuals.">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://www.healingminds.com">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Healing Minds | Psychosocial Rehabilitation Services">
+    <meta name="twitter:description" content="Healing Minds provides personalized psychosocial rehabilitation services to empower individuals.">
+    <meta name="twitter:image" content="images/twitter-card.jpg">
+    
     <title>Healing Minds | Psychosocial Rehabilitation Services</title>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- External Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header with Accessible Navigation -->
+    <header role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main Navigation">
             <div class="logo">
-                <h1>Healing Minds</h1>
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Healing Minds Logo" width="150" height="50">
+                </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+            <!-- Accessible burger menu button -->
+            <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+            <div class="language-selector">
+                <select aria-label="Select language" onchange="changeLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                </select>
             </div>
+        </nav>
+        <!-- Add after header -->
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li aria-current="page">Current Page</li>
+            </ol>
         </nav>
     </header>
 
-    <main>
+    <!-- Main Content Area -->
+    <main role="main" id="main-content">
+        <!-- Hero Section -->
         <section class="hero">
+            <div class="hero-background">
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="videos/healing-minds.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+            </div>
             <div class="hero-content">
-                <h2>Welcome to Healing Minds</h2>
-                <p>Empowering individuals through personalized psychosocial rehabilitation services</p>
-                <a href="contact.html" class="cta-button">Get Started</a>
+                <h1 class="hero-title animate-fade-up">
+                    <span class="accent-text">Transform</span> Your Life
+                </h1>
+                <p class="hero-subtitle animate-fade-up">Begin your journey to wellness with personalized psychosocial rehabilitation</p>
+                <div class="hero-buttons animate-fade-up">
+                    <a href="contact.html" class="primary-button">Start Your Journey</a>
+                    <a href="#services" class="secondary-button">Explore Services</a>
+                </div>
             </div>
         </section>
 
-        <section class="features">
-            <h2>Our Services</h2>
+        <!-- Features Section -->
+        <section class="features" aria-labelledby="services-heading">
+            <h2 id="services-heading" class="animate-on-scroll">Our Services</h2>
             <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-brain"></i>
+                <article class="feature-card animate-on-scroll">
+                    <i class="fas fa-brain" aria-hidden="true"></i>
                     <h3>Cognitive Skills Training</h3>
-                    <p>Enhance mental functioning and problem-solving abilities</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-hands-helping"></i>
+                    <p>Enhance mental functioning and problem-solving abilities through evidence-based techniques</p>
+                    <a href="services.html#cognitive" class="learn-more">Learn More <span class="sr-only">about Cognitive Skills Training</span></a>
+                </article>
+                <article class="feature-card animate-on-scroll">
+                    <i class="fas fa-hands-helping" aria-hidden="true"></i>
                     <h3>Social Skills Development</h3>
-                    <p>Build meaningful relationships and improve communication</p>
-                </div>
+                    <p>Build meaningful relationships and improve communication through structured programs</p>
+                    <a href="services.html#social" class="learn-more">Learn More <span class="sr-only">about Social Skills Development</span></a>
+                </article>
                 <div class="feature-card">
                     <i class="fas fa-home"></i>
                     <h3>Independent Living Skills</h3>
@@ -61,29 +122,153 @@
                 </div>
             </div>
         </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" aria-labelledby="testimonials-heading">
+            <h2 id="testimonials-heading">What Our Clients Say</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial">
+                    <blockquote>
+                        <p>"The support I received from Healing Minds transformed my life."</p>
+                        <footer>- Sarah M.</footer>
+                    </blockquote>
+                </div>
+                <!-- Add more testimonials -->
+            </div>
+        </section>
     </main>
 
-    <footer>
+    <!-- Newsletter Section -->
+    <section class="newsletter" aria-labelledby="newsletter-heading">
+        <h2 id="newsletter-heading">Stay Updated</h2>
+        <form action="/subscribe" method="POST" class="newsletter-form">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required 
+                       aria-describedby="email-help">
+                <small id="email-help">We'll never share your email with anyone else.</small>
+            </div>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p>Email: info@healingminds.com</p>
-                <p>Phone: (555) 123-4567</p>
+                <address>
+                    <p>Email: <a href="mailto:info@healingminds.com">info@healingminds.com</a></p>
+                    <p>Phone: <a href="tel:+15551234567">(555) 123-4567</a></p>
+                    <p>Address: 123 Healing Street, Mindful City, MC 12345</p>
+                </address>
             </div>
             <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="accessibility.html">Accessibility Statement</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="resources.html">Helpful Resources</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Healing Minds. All rights reserved.</p>
+            <p>&copy; <span id="current-year">2024</span> Healing Minds. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Load JavaScript with defer for improved performance -->
+    <script src="js/main.js" defer></script>
+
+    <!-- Add this after the opening body tag -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "Healing Minds",
+      "description": "Psychosocial rehabilitation services provider",
+      "url": "https://www.healingminds.com",
+      "telephone": "+15551234567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Healing Street",
+        "addressLocality": "Mindful City",
+        "postalCode": "12345",
+        "addressCountry": "US"
+      },
+      "openingHours": "Mo,Tu,We,Th,Fr 09:00-17:00"
+    }
+    </script>
+
+    <!-- Add before closing body tag -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>We use cookies to improve your experience. By continuing to use our site, you agree to our 
+            <a href="privacy.html">Privacy Policy</a>.</p>
+        <button class="accept-cookies">Accept</button>
+    </div>
+
+    <!-- Add before closing body tag -->
+    <button id="backToTop" aria-label="Back to top" class="back-to-top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <!-- Add before closing body tag -->
+    <div id="chat-widget" class="chat-widget" aria-live="polite">
+        <button class="chat-toggle" aria-expanded="false">
+            <span class="sr-only">Toggle chat</span>
+            <i class="fas fa-comments" aria-hidden="true"></i>
+        </button>
+        <div class="chat-container" hidden>
+            <!-- Chat interface will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Add after the chat-widget div and before closing body tag -->
+    <div id="welcomePopup" class="popup-overlay">
+        <div class="popup-content" role="dialog" aria-labelledby="welcomeTitle">
+            <button class="close-popup" aria-label="Close popup">&times;</button>
+            <h2 id="welcomeTitle">Welcome to Healing Minds</h2>
+            <p>We're here to support your journey to wellness. Would you like to:</p>
+            <div class="popup-buttons">
+                <a href="services.html" class="popup-button">Explore Services</a>
+                <a href="contact.html" class="popup-button">Schedule Consultation</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add after the welcome popup -->
+    <div id="consultationPopup" class="popup-overlay">
+        <div class="popup-content" role="dialog" aria-labelledby="consultationTitle">
+            <button class="close-popup" aria-label="Close popup">&times;</button>
+            <h2 id="consultationTitle">Book a Free Consultation</h2>
+            <form id="consultationForm" class="popup-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="popup-email">Email</label>
+                    <input type="email" id="popup-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="preferred-time">Preferred Time</label>
+                    <input type="datetime-local" id="preferred-time" name="preferred-time" required>
+                </div>
+                <button type="submit" class="popup-button">Schedule Now</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html> 
