@@ -748,9 +748,55 @@ footer {
 }
 
 /* Services Popup Styles */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.popup-overlay.active {
+    display: block;
+}
+
 .services-popup .popup-content {
+    position: relative;
+    background: white;
     max-width: 900px;
+    margin: 2rem auto;
     padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-strong);
+}
+
+.close-popup {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .services-popup .popup-content {
+        background: #2d2d2d;
+        color: var(--light-text);
+    }
+
+    .close-popup {
+        color: var(--light-text);
+    }
 }
 
 .services-grid {
