@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Minds | Psychosocial Rehabilitation Services</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Healing Minds</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Welcome to Healing Minds</h2>
+                <p>Empowering individuals through personalized psychosocial rehabilitation services</p>
+                <a href="contact.html" class="cta-button">Get Started</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Our Services</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Cognitive Skills Training</h3>
+                    <p>Enhance mental functioning and problem-solving abilities</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Social Skills Development</h3>
+                    <p>Build meaningful relationships and improve communication</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Independent Living Skills</h3>
+                    <p>Develop essential life skills for greater autonomy</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Emotional Support</h3>
+                    <p>Navigate challenges with professional guidance</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@healingminds.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Healing Minds. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
