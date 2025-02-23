@@ -223,4 +223,33 @@ const handleFormError = (form, error) => {
     errorDiv.textContent = error;
     form.appendChild(errorDiv);
     setTimeout(() => errorDiv.remove(), 5000);
+};
+
+// Services Popup Handler
+const servicesLink = document.querySelector('.services-trigger');
+const servicesPopup = document.getElementById('servicesPopup');
+
+if (servicesLink && servicesPopup) {
+    servicesLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        popupManager.showPopup('servicesPopup');
+    });
+
+    // Add hover effect for service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.querySelector('i').style.transform = 'scale(1.1)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.querySelector('i').style.transform = 'scale(1)';
+        });
+    });
+}
+
+// Track service clicks for analytics
+const trackServiceClick = (serviceName) => {
+    // Add your analytics code here
+    console.log(`Service clicked: ${serviceName}`);
 }; 
