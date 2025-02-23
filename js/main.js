@@ -46,15 +46,69 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+// Enhanced Smooth Scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollLinks = document.querySelectorAll('a[href^="#"]');
+    const headerOffset = 80; // Height of your fixed header
+
+    scrollLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return; // Skip empty links
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Update URL without jumping
+                history.pushState(null, '', targetId);
+            }
+        });
+    });
+
+    // Handle initial hash in URL
+    if (window.location.hash) {
+        const initialTarget = document.querySelector(window.location.hash);
+        if (initialTarget) {
+            setTimeout(() => {
+                const elementPosition = initialTarget.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+    }
+});
+
+// Add active state to navigation links while scrolling
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const scrollPosition = window.pageYOffset + 100; // Offset for better trigger point
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
             });
         }
     });
@@ -225,59 +279,45 @@ const handleFormError = (form, error) => {
     setTimeout(() => errorDiv.remove(), 5000);
 };
 
-// Services Popup Handler
-const servicesLink = document.querySelector('.services-trigger');
-const servicesPopup = document.getElementById('servicesPopup');
+// Services Popup Handler - Simplified Version
+document.addEventListener('DOMContentLoaded', () => {
+    const servicesLink = document.querySelector('.services-trigger');
+    const servicesPopup = document.getElementById('servicesPopup');
+    const closeButtons = document.querySelectorAll('.close-popup');
 
-if (servicesLink && servicesPopup) {
-    // Remove previous event listeners
-    servicesLink.replaceWith(servicesLink.cloneNode(true));
-    
-    // Get the new element after replacement
-    const newServicesLink = document.querySelector('.services-trigger');
-    
-    // Add new click event listener
-    newServicesLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        servicesPopup.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-    });
+    if (servicesLink && servicesPopup) {
+        // Open popup
+        servicesLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            servicesPopup.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
 
-    // Close popup when clicking outside
-    servicesPopup.addEventListener('click', (e) => {
-        if (e.target === servicesPopup) {
-            servicesPopup.style.display = 'none';
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-    });
+        // Close popup with close button
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                servicesPopup.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        });
 
-    // Close popup when clicking the close button
-    const closeButton = servicesPopup.querySelector('.close-popup');
-    if (closeButton) {
-        closeButton.addEventListener('click', () => {
-            servicesPopup.style.display = 'none';
-            document.body.style.overflow = '';
+        // Close popup when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === servicesPopup) {
+                servicesPopup.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && servicesPopup.style.display === 'block') {
+                servicesPopup.style.display = 'none';
+                document.body.style.overflow = '';
+            }
         });
     }
-
-    // Add hover effects for service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const icon = card.querySelector('i');
-            if (icon) {
-                icon.style.transform = 'scale(1.1)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            const icon = card.querySelector('i');
-            if (icon) {
-                icon.style.transform = 'scale(1)';
-            }
-        });
-    });
-}
+});
 
 // Track service clicks for analytics
 const trackServiceClick = (serviceName) => {
