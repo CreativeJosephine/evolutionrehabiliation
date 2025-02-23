@@ -531,7 +531,7 @@ main {
     padding: 2.5rem 2rem;
     border-radius: var(--border-radius);
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
@@ -541,8 +541,8 @@ main {
 }
 
 .feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-strong);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .feature-card i {
@@ -617,8 +617,14 @@ main {
 
 /* Dark mode adjustments */
 @media (prefers-color-scheme: dark) {
+    :root {
+        --background-light: #1a1a1a;
+        --text-color: #ffffff;
+        --card-background: #2d2d2d;
+    }
+
     .feature-card {
-        background: #2d2d2d;
+        background-color: var(--card-background);
     }
 
     .feature-card h3,
@@ -799,7 +805,16 @@ footer {
    ========================================================================== */
 /* Mobile Devices */
 @media (max-width: 768px) {
-    /* Mobile styles... */
+    .nav-links a,
+    .button,
+    .form-control {
+        min-height: 44px; /* Minimum touch target size */
+        padding: 12px 20px;
+    }
+    
+    .grid {
+        gap: 20px; /* More space on mobile */
+    }
 }
 
 /* Tablet Devices */
@@ -933,33 +948,34 @@ footer {
     transition: width 0.3s ease;
 }
 
-/* Focus styles */
+/* Better focus indicators */
 :focus {
     outline: 3px solid var(--accent-color);
     outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(249, 160, 63, 0.4);
 }
 
-/* Skip link */
+/* Skip to main content link */
 .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
+    position: fixed;
+    top: -100px;
+    left: 20px;
+    padding: 15px;
     background: var(--accent-color);
     color: white;
-    padding: 8px;
-    z-index: 1001;
+    z-index: 2000;
+    transition: top 0.3s;
 }
 
 .skip-link:focus {
-    top: 0;
+    top: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background-light: #1a1a1a;
         --text-color: #ffffff;
-        --primary-color: #4a90e2;
-        --secondary-color: #2c3e50;
+        --card-background: #2d2d2d;
     }
 
     .navbar {
@@ -967,7 +983,7 @@ footer {
     }
 
     .feature-card {
-        background: #2d2d2d;
+        background-color: var(--card-background);
     }
 }
 
@@ -1653,5 +1669,39 @@ section {
     .hero-image-container {
         margin: 0 auto var(--spacing-lg);
         border-radius: var(--border-radius-lg);
+    }
+}
+
+/* Smooth scroll animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #003366;
+        --accent-color: #cc4400;
+        --text-color: #000000;
+        --background-light: #ffffff;
+    }
+
+    .feature-card {
+        border: 2px solid var(--text-color);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
     }
 } 
