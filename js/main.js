@@ -46,13 +46,17 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Smooth Scroll
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
 
@@ -210,4 +214,13 @@ if (journeyButton) {
         closeButton.addEventListener('click', closeAlert);
         continueButton.addEventListener('click', closeAlert);
     });
-} 
+}
+
+// Form error handling
+const handleFormError = (form, error) => {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error';
+    errorDiv.textContent = error;
+    form.appendChild(errorDiv);
+    setTimeout(() => errorDiv.remove(), 5000);
+}; 
