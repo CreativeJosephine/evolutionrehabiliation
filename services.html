@@ -10,9 +10,44 @@
 </head>
 <body>
     <header role="banner">
-        <!-- Copy the same navigation from index.html -->
         <nav class="navbar" role="navigation" aria-label="Main Navigation">
-            <!-- Navigation content -->
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img 
+                            src="placeholder.jpg" 
+                            data-src="actual-image.jpg" 
+                            loading="lazy" 
+                            class="lazy"
+                            alt="Healing Minds Logo"
+                            width="150" height="50" 
+                            onerror="this.onerror=null; this.parentElement.innerHTML='Healing Minds';">
+                    </a>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="language-selector">
+                        <select aria-label="Select language" onchange="changeLanguage(this.value)">
+                            <option value="en">EN</option>
+                            <option value="es">ES</option>
+                            <option value="fr">FR</option>
+                        </select>
+                    </div>
+                    
+                    <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                </div>
+            </div>
         </nav>
     </header>
 
