@@ -518,4 +518,40 @@ const UserPreferences = {
             document.documentElement.style.fontSize = this.preferences.fontSize;
         }
     }
-}; 
+};
+
+import { FormHandler } from './utils/form-handler.js';
+import { LanguageManager } from './utils/language-manager.js';
+
+// Initialize form handlers
+document.addEventListener('DOMContentLoaded', () => {
+    // Contact form
+    const contactForm = document.querySelector('#contactForm');
+    if (contactForm) {
+        new FormHandler(contactForm);
+    }
+
+    // Consultation form
+    const consultationForm = document.querySelector('#consultationForm');
+    if (consultationForm) {
+        new FormHandler(consultationForm);
+    }
+
+    // Newsletter form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        new FormHandler(newsletterForm);
+    }
+
+    // Initialize language manager
+    const langManager = new LanguageManager();
+});
+
+// Import the testimonial slider
+import './components/testimonial-slider.js';
+
+// Import the FAQ accordion
+import './components/faq-accordion.js';
+
+// Import the chat widget
+import './components/chat-widget.js'; 
