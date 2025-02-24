@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.js",
+    "extract-critical": "node scripts/extract-critical.js",
+    "build": "npm run optimize-images && npm run extract-critical"
+  },
+  "dependencies": {
+    "sharp": "^0.32.0",
+    "critical": "^5.0.0"
+  }
+} 

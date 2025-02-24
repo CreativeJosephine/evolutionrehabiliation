@@ -53,6 +53,23 @@
         style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline';
         img-src 'self' data: https:; 
         font-src 'self' https://cdnjs.cloudflare.com;">
+
+    <!-- Inline critical CSS -->
+    <style>
+        /* Critical CSS will be injected here */
+        @import url('css/critical-home.css');
+    </style>
+    
+    <!-- Async load full CSS -->
+    <link 
+        rel="preload" 
+        href="css/styles.css" 
+        as="style" 
+        onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <noscript>
+        <link rel="stylesheet" href="css/styles.css">
+    </noscript>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -77,10 +94,10 @@
                 </div>
                 
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                 </ul>
 
                 <div class="nav-right">
@@ -115,22 +132,22 @@
         <section class="hero">
             <div class="hero-background"></div>
             <div class="hero-content">
-                <h1 class="hero-title">
-                    Transform Your Life With 
-                    <span class="highlight">Professional Support</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Begin your journey to wellness with personalized psychosocial rehabilitation services. 
-                    Our expert team is here to support and guide you every step of the way.
-                </p>
+                <h1 data-i18n="hero.title">Transform Your Life With Professional Support</h1>
+                <p data-i18n="hero.subtitle">Begin your journey to wellness with personalized psychosocial rehabilitation services. Our expert team is here to support and guide you every step of the way.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="primary-button" role="button">
+                    <a href="#contact" class="primary-button" data-i18n="hero.cta" role="button">
                         Start Your Journey
                         <span class="sr-only">Begin your wellness journey now</span>
                     </a>
-                    <a href="#services" class="secondary-button">Explore Services</a>
+                    <a href="#services" class="secondary-button" data-i18n="hero.explore">Explore Services</a>
                 </div>
             </div>
+            <responsive-image 
+                src="images/hero-image.jpg"
+                alt="Hero image showing mental health support"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                lazy>
+            </responsive-image>
         </section>
 
         <!-- Features Section -->
@@ -183,15 +200,49 @@
 
         <!-- Testimonials Section -->
         <section class="testimonials" aria-labelledby="testimonials-heading">
-            <h2 id="testimonials-heading">What Our Clients Say</h2>
-            <div class="testimonial-carousel">
-                <div class="testimonial">
-                    <blockquote>
-                        <p>"The support I received from Healing Minds transformed my life."</p>
-                        <footer>- Sarah M.</footer>
-                    </blockquote>
-                </div>
-                <!-- Add more testimonials -->
+            <div class="container">
+                <h2 id="testimonials-heading" class="section-title">What Our Clients Say</h2>
+                
+                <testimonial-slider>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"The support I received from Healing Minds transformed my life. The team's dedication and expertise helped me develop the skills I needed to thrive."</p>
+                        </div>
+                        <div class="author-info">
+                            <img src="images/testimonials/client1.jpg" alt="" class="author-image">
+                            <div class="author-details">
+                                <h3 class="author-name">Sarah Johnson</h3>
+                                <p class="author-title">Client since 2022</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"The personalized approach and genuine care shown by the therapists made all the difference. I've gained confidence and valuable life skills."</p>
+                        </div>
+                        <div class="author-info">
+                            <img src="images/testimonials/client2.jpg" alt="" class="author-image">
+                            <div class="author-details">
+                                <h3 class="author-name">Michael Chen</h3>
+                                <p class="author-title">Client since 2021</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"I'm grateful for the comprehensive support system at Healing Minds. Their holistic approach helped me achieve lasting positive changes."</p>
+                        </div>
+                        <div class="author-info">
+                            <img src="images/testimonials/client3.jpg" alt="" class="author-image">
+                            <div class="author-details">
+                                <h3 class="author-name">Emily Rodriguez</h3>
+                                <p class="author-title">Client since 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </testimonial-slider>
             </div>
         </section>
     </main>
@@ -218,6 +269,63 @@
                     <i class="fas fa-paper-plane" aria-hidden="true"></i>
                 </button>
             </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" aria-labelledby="faq-heading">
+        <div class="container">
+            <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
+            
+            <faq-accordion>
+                <div class="faq-item">
+                    <div class="question" role="button" tabindex="0" aria-expanded="false">
+                        <h3>What services do you offer?</h3>
+                        <span class="icon"></span>
+                    </div>
+                    <div class="answer">
+                        <div class="answer-content">
+                            We offer a comprehensive range of psychosocial rehabilitation services, including cognitive skills training, social skills development, independent living skills training, and emotional support. Each service is tailored to meet your individual needs and goals.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="question" role="button" tabindex="0" aria-expanded="false">
+                        <h3>How long does a typical program last?</h3>
+                        <span class="icon"></span>
+                    </div>
+                    <div class="answer">
+                        <div class="answer-content">
+                            Program duration varies based on individual needs and goals. Typically, programs range from 3 to 12 months, with regular assessments to track progress and adjust treatment plans accordingly.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="question" role="button" tabindex="0" aria-expanded="false">
+                        <h3>Do you accept insurance?</h3>
+                        <span class="icon"></span>
+                    </div>
+                    <div class="answer">
+                        <div class="answer-content">
+                            Yes, we accept most major insurance plans. We also offer flexible payment options and can work with you to determine the best financial arrangement for your situation.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="question" role="button" tabindex="0" aria-expanded="false">
+                        <h3>How do I get started?</h3>
+                        <span class="icon"></span>
+                    </div>
+                    <div class="answer">
+                        <div class="answer-content">
+                            Getting started is easy! Simply schedule a free initial consultation through our website or call us directly. During this consultation, we'll discuss your needs, answer any questions, and develop a personalized treatment plan.
+                        </div>
+                    </div>
+                </div>
+            </faq-accordion>
         </div>
     </section>
 
@@ -289,16 +397,8 @@
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
-    <!-- Add before closing body tag -->
-    <div id="chat-widget" class="chat-widget" aria-live="polite">
-        <button class="chat-toggle" aria-expanded="false">
-            <span class="sr-only">Toggle chat</span>
-            <i class="fas fa-comments" aria-hidden="true"></i>
-        </button>
-        <div class="chat-container" hidden>
-            <!-- Chat interface will be loaded here -->
-        </div>
-    </div>
+    <!-- Replace the existing chat widget div with -->
+    <chat-widget></chat-widget>
 
     <!-- Add after the chat-widget div and before closing body tag -->
     <div id="welcomePopup" class="popup-overlay">
